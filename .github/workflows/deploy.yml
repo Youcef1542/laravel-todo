@@ -1,0 +1,26 @@
+name: CI/CD Laravel ToDo
+
+on:
+  push:
+    branches:
+      - main  # Le pipeline se lance à chaque "git push" sur main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cloner le dépôt
+        uses: actions/checkout@v3
+
+      - name: Installer PHP et dépendances Laravel
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y php-cli php-mbstring unzip curl composer
+          composer install
+
+      - name: Construire l'image Docker
+        run: docker build -t laravel-todo .
+
+      - name: Lancer un test de conteneur
+        run: docker run -d -p 8080:80 laravel-todo
