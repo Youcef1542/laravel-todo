@@ -275,3 +275,4 @@
         @endif
     </body>
 </html>
+<h2 style="color: orange;">🚀 Test CI/CD réussi avec Docker et GitHub Actions !</h2>

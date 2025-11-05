@@ -1,12 +1,10 @@
-
-
 services:
   app:
     build: ./docker/app
     container_name: todo_app
     working_dir: /var/www/html
     volumes:
-      - ./app:/var/www/html
+      - ./:/var/www/html   # ✅ On monte tout le projet à la racine
     depends_on:
       - db
 
@@ -16,7 +14,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./app:/var/www/html
+      - ./:/var/www/html   # ✅ Même correction ici
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - app
@@ -36,3 +34,4 @@ services:
 
 volumes:
   db_data:
+
