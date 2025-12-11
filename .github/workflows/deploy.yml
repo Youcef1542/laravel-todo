@@ -3,7 +3,7 @@ name: CI/CD Laravel ToDo
 on:
   push:
     branches:
-      - main  # Le pipeline se lance à chaque "git push" sur main
+      - main
 
 jobs:
   build:
@@ -13,14 +13,14 @@ jobs:
       - name: Cloner le dépôt
         uses: actions/checkout@v3
 
-      - name: Installer PHP et dépendances Laravel
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y php-cli php-mbstring unzip curl composer
-          composer install
+      - name: Se connecter à Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Construire l'image Docker
-        run: docker build -t laravel-todo .
+      - name: Construire l'image Docker CORRECTE (Laravel complet)
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/laravel-todo:latest -f docker/app/Dockerfile .
 
-      - name: Lancer un test de conteneur
-        run: docker run -d -p 8080:80 laravel-todo
+      - name: Pusher l'image vers Docker Hub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/laravel-todo:latest
