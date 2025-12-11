@@ -43,7 +43,7 @@
     </div>
 
     <footer>
-        <p>Créé avec ❤️ par Youcef Merioud</p>
+        <p>Créé avec ❤️ par Youcef Merioud Chikourrrrrrrrr</p>
     </footer>
 
     <script>
