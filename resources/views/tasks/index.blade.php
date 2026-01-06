@@ -10,8 +10,8 @@
     <button id="theme-toggle">🌙 Mode sombre</button>
 
     <div class="container">
-<div style="background:#16a34a;color:white;padding:12px;text-align:center;font-weight:bold;">
-    ✅ CI/CD OK — Deployed from GitHub Actions
+<div style="background:#000;color:#0f0;padding:8px;text-align:center;">
+  🚀 DEPLOYED VIA GITHUB ACTIONS – VERSION 2
 </div>
 
         <h1>Ma ToDo List</h1>
