@@ -10,6 +10,10 @@
     <button id="theme-toggle">🌙 Mode sombre</button>
 
     <div class="container">
+<div style="background:#16a34a;color:white;padding:12px;text-align:center;font-weight:bold;">
+    ✅ CI/CD OK — Deployed from GitHub Actions
+</div>
+
         <h1>Ma ToDo List</h1>
 
         <form action="/tasks" method="POST">
