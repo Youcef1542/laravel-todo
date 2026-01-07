@@ -1,40 +1,40 @@
 FROM php:8.2-fpm
 
-# Installer dépendances + nginx
+# Installer dépendances système + MySQL + PHP extensions
 RUN apt-get update && apt-get install -y \
     nginx \
     zip \
     unzip \
     git \
+    libzip-dev \
     libpng-dev \
     libonig-dev \
-    libxml2-dev \
-    sqlite3 \
-    libsqlite3-dev \
-    && docker-php-ext-install pdo pdo_sqlite mbstring exif pcntl bcmath gd
+    default-mysql-client \
+    && docker-php-ext-install pdo pdo_mysql \
+    && docker-php-ext-enable pdo_mysql \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Installer Composer manuellement (sans Docker Hub)
+# Installer Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm composer-setup.php
 
-
+# Dossier de travail
 WORKDIR /var/www
 
-# Copier le projet
+# Copier le projet Laravel
 COPY . .
 
-# Installer dépendances Laravel
+# Installer dépendances PHP Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# Permissions
+# Permissions Laravel
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www/storage
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Config nginx
-COPY docker/nginx/nginx.conf /etc/nginx/sites-available/default
-
+# Exposer le port
 EXPOSE 80
 
-CMD ["sh", "-c", "nginx -g 'daemon off;' & php-fpm -F"]
-
+# Démarrer Nginx + PHP-FPM
+CMD ["sh", "-c", "service nginx start && php-fpm"]
