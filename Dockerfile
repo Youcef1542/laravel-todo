@@ -18,6 +18,10 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
+# 🔥 CRITIQUE : nettoyer les caches Laravel pour refléter les changements Blade
+RUN php artisan view:clear \
+ && php artisan config:clear \
+ && php artisan route:clear
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 storage bootstrap/cache
 
