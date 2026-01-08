@@ -44,7 +44,7 @@
     </div>
 
     <footer>
-        <p>Créé avec par Youcef Merioud Chikourrrrrrrrr</p>
+        <p>Créé avec par le fameux Youcef Merioud Chikourrrrrrrrr</p>
     </footer>
 
     <script>
