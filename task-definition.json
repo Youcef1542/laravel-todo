@@ -17,6 +17,45 @@
           "protocol": "tcp"
         }
       ],
+"environment": [
+        {
+          "name": "APP_ENV",
+          "value": "production"
+        },
+        {
+          "name": "DB_USERNAME",
+          "value": "admin"
+        },
+        {
+          "name": "DB_PORT",
+          "value": "3306"
+        },
+        {
+          "name": "DB_CONNECTION",
+          "value": "mysql"
+        },
+        {
+          "name": "APP_KEY",
+          "value": "base64:IACR1Kl9CUstzUPKQxtlyL54lhlLKujI64uheEJ8u6g="
+        },
+        {
+          "name": "DB_HOST",
+          "value": "laravel-todo-db.cpau0m2catkf.eu-north-1.rds.amazonaws.com"
+        },
+        {
+          "name": "APP_DEBUG",
+          "value": "false"
+        },
+        {
+          "name": "DB_DATABASE",
+          "value": "laravel_todo"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "value": "Milaha1947"
+        }
+      ],
+
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
