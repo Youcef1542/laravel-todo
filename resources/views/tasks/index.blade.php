@@ -26,7 +26,7 @@
             @csrf
             @method('PUT')
             <button type="submit" style="background: #28a745; border: none; padding: 6px 10px; border-radius: 6px; color: white; font-weight: bold; cursor: pointer;">
-                ✅ C’est fait
+                ✅ 
             </button>
             <span style="flex: 1; {{ $task->completed ? 'text-decoration: line-through; color: gray;' : '' }}">
                 {{ $task->title }}
