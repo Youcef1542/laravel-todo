@@ -7,7 +7,7 @@
   "executionRoleArn": "arn:aws:iam::041238860946:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
-      "name": "todo-container",
+      "name": "todo-app",
       "image": "041238860946.dkr.ecr.eu-north-1.amazonaws.com/laravel-todo:latest",
       "essential": true,
       "portMappings": [
