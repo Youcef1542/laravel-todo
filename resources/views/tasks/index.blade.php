@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ time() }}">
 </head>
 <body class="light-mode">
-    <button id="theme-toggle">🌙 Mode sombre</button>
+<button id="theme-toggle" class="theme-toggle">
+    🌙 <span>Mode sombre</span>
+</button>
 
-    <div class="container">
+    <div class="container todo-card">
 
         <h1>Ma ToDo List</h1>
 
@@ -42,25 +44,40 @@
    
         </ul>
     </div>
+<footer class="site-footer">
+    <p>
+        © {{ date('Y') }} — <strong>Ma ToDo List</strong>  
+        <span class="separator">|</span>
+        Projet DevOps — Youcef Merioud
+    </p>
+</footer>
 
-    <footer>
-        <p> </p>
-    </footer>
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const body = document.body;
+    // 🔁 RESTAURER LE THÈME AU CHARGEMENT
+    const savedTheme = localStorage.getItem('theme');
 
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            body.classList.toggle('light-mode');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+        toggle.textContent = '☀️ Mode clair';
+    }
 
-            if (body.classList.contains('dark-mode')) {
-                toggle.textContent = '☀️ Mode clair';
-            } else {
-                toggle.textContent = '🌙 Mode sombre';
-            }
-        });
-    </script>
+    // 🌙 TOGGLE DU THÈME
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode');
+
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            toggle.textContent = '☀️ Mode clair';
+        } else {
+            localStorage.setItem('theme', 'light');
+            toggle.textContent = '🌙 Mode sombre';
+        }
+    });
+</script>
 </body>
 </html>
