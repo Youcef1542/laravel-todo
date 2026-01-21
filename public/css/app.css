@@ -168,3 +168,92 @@ body.dark-mode .task-item {
   background: #0d6efd;
   color: white;
 }
+/* ======================
+   Footer
+====================== */
+
+.site-footer {
+    margin-top: 40px;
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: #f1f5f9;
+    color: #334155;
+    border-top: 1px solid #e2e8f0;
+}
+
+.site-footer .separator {
+    margin: 0 8px;
+    color: #94a3b8;
+}
+
+/* 🌙 Dark mode */
+body.dark-mode .site-footer {
+    background-color: #0f172a;
+    color: #e5e7eb;
+    border-top: 1px solid #1e293b;
+}
+
+body.dark-mode .site-footer .separator {
+    color: #64748b;
+}
+/* ======================
+   ToDo Card
+====================== */
+
+.todo-card {
+    max-width: 420px;
+    margin: 60px auto 40px auto;
+    padding: 30px 25px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.08),
+        0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 🌙 Dark mode */
+body.dark-mode .todo-card {
+    background: #020617;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.35);
+}
+/* ======================
+   Theme Toggle Button
+====================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+}
+
+/* 🌙 Dark mode */
+body.dark-mode .theme-toggle {
+    background: #0f172a;
+    color: #e5e7eb;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .theme-toggle span {
+    content: "Mode clair";
+}
