@@ -7,21 +7,15 @@ on:
 
 jobs:
   deploy-vmware:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, vmware]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy on VMware via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.VM_SSH_KEY }}
-          port: 22
-          script: |
-            cd /home/devops/laravel-todo
-            git pull origin main
-            docker compose down
-            docker compose up -d --build
+      - name: Deploy on VMware (local Docker)
+        run: |
+          cd /home/devops/laravel-todo
+          git pull origin main
+          docker compose down
+          docker compose up -d --build
