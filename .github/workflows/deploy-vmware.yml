@@ -1,0 +1,27 @@
+name: Deploy to VMware (Private Cloud)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-vmware:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy on VMware via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VMWARE_HOST }}
+          username: ${{ secrets.VMWARE_USER }}
+          key: ${{ secrets.VMWARE_SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/devops/laravel-todo
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
