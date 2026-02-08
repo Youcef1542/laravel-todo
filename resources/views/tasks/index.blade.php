@@ -13,7 +13,7 @@
 
     <div class="container todo-card">
 
-        <h1>Ma ToDo List App</h1>
+        <h1>Ma ToDo List </h1>
 
         <form action="/tasks" method="POST">
             @csrf
